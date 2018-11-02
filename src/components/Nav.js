@@ -1,7 +1,12 @@
 import piggy from '../porco.png'
-import React from 'react'
+import React,{Component} from 'react'
 
-const Nav = () => {
+class Nav extends Component {
+
+
+
+
+render(){
 	return (
 		<div className="navWrapper">
 			<span className="headerText">Hogwarts</span>
@@ -11,8 +16,26 @@ const Nav = () => {
 				</a>
 			</div>
 			<span className="normalText">A React App for County Fair Hog Fans</span>
+
+
+
+
+				<select onChange={(event)=>this.props.handleSort(event)}>
+				<option value="default">Sort By</option>
+				<option value="name">name</option>
+				<option value="weight">weight</option>
+				</select>
+
+				<select onChange={(event)=>this.props.handleFilter(event)}>
+				<option value='default'>Filter By</option>
+				<option value='greased'>Greasy AF</option>
+				<option value='notGreased'>Nah no grease</option>
+				</select>
+
+
 		</div>
 	)
+}
 }
 
 export default Nav

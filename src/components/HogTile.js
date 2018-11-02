@@ -5,16 +5,13 @@ import React, {Component} from 'react';
 export default class HogTile extends Component {
 
     state={
-      // urlName:this.props.hogObj.name.replace(/\s/g,'_'),
       details: false
       }
 
+
       handleClick=(event)=>{
-        if (this.state.details===false){
-          this.setState({details:true})
-        }else{
-          this.setState({details:false})
-        }
+        this.setState({details: !this.state.details})
+
       }
 
       addDetails=()=>{
@@ -34,7 +31,7 @@ export default class HogTile extends Component {
     <h1>{this.props.hogObj.name}</h1>
     <img onClick={this.handleClick}
     src= {`http://localhost:3000/hog-imgs/${this.props.url}.jpg`} />
-    {this.state.details ? this.addDetails() : console.log(this.state.details)}
+    {this.state.details ? this.addDetails(): null}
       </div>
         // HANDLE THIS CONSOLE.LOG WHEN DONE
     )

@@ -3,14 +3,80 @@ import '../App.css';
 import Nav from './Nav'
 import HogContainer from './HogContainer';
 
-// console.log(Component);
+import hogs from '../porkers_data';
+
+
 
 class App extends Component {
+
+
+state = {
+  hogData: hogs
+
+}
+
+handleSort=(event)=>{
+  if (event.target.value==="name"){
+    // console.log("in name sort")
+    let newHogsData = this.state.hogData.sort(function(a, b){
+      const nameA = a.name
+      const nameB = b.name
+      if (nameA < nameB){
+        return -1;
+      }
+      if (nameA > nameB){
+        return 1;
+      }
+      return 0;
+    })
+      console.log("IN SORT", newHogsData);
+    this.setState({
+      hogData: newHogsData
+    })
+
+  }if (event.target.value==="weight"){
+    console.log("yo im in weight")
+    let newHogsData = this.state.hogData.sort(function(a, b){
+      const weightA = a['weight as a ratio of hog to LG - 24.7 Cu. Ft. French Door Refrigerator with Thru-the-Door Ice and Water']
+      const weightB = b['weight as a ratio of hog to LG - 24.7 Cu. Ft. French Door Refrigerator with Thru-the-Door Ice and Water']
+      console.log(weightA, weightB);
+      if (weightA < weightB){
+        return -1;
+      }
+      if (weightA > weightB){
+        return 1;
+      }
+      return 0;
+    })
+    this.setState({
+      hogData: newHogsData})
+  }
+}
+
+handleFilter=(event)=>{
+
+if (event.target.value==='greased'){
+  let newHogsData = this.state.hogData.filter(function(hog){
+    return hog.greased===true
+  })
+  this.setState({hogData: newHogsData})
+} if (event.target.value==='notGreased'){
+  let newHogsData = this.state.hogData.filter(function(hog){
+    return hog.greased===false
+  })
+
+  this.setState({hogData: newHogsData})
+}
+
+}
+
+
+
   render() {
     return (
       <div className="App">
-          < Nav />
-          < HogContainer/>
+          < Nav hogData={hogs} handleSort={this.handleSort} handleFilter={this.handleFilter}/>
+          < HogContainer hogData={hogs}/>
       </div>
     )
   }
