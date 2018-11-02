@@ -27,9 +27,9 @@ render(){
 				</select>
 
 				<select onChange={(event)=>this.props.handleFilter(event)}>
-				<option value='default'>Filter By</option>
-				<option value='greased'>Greasy AF</option>
-				<option value='notGreased'>Nah no grease</option>
+				<option value="default">Filter By</option>
+				<option value="greased">Greasy AF</option>
+				<option value="notGreased">Nah no grease</option>
 				</select>
 
 
