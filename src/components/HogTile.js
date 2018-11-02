@@ -5,7 +5,7 @@ import React, {Component} from 'react';
 export default class HogTile extends Component {
 
     state={
-      urlName:this.props.hogObj.name.replace(/\s/g,'_'),
+      // urlName:this.props.hogObj.name.replace(/\s/g,'_'),
       details: false
       }
 
@@ -33,7 +33,7 @@ export default class HogTile extends Component {
 
     <h1>{this.props.hogObj.name}</h1>
     <img onClick={this.handleClick}
-    src= {`http://localhost:3000/hog-imgs/${this.state.urlName}.jpg`} />
+    src= {`http://localhost:3000/hog-imgs/${this.props.url}.jpg`} />
     {this.state.details ? this.addDetails() : console.log(this.state.details)}
       </div>
         // HANDLE THIS CONSOLE.LOG WHEN DONE
